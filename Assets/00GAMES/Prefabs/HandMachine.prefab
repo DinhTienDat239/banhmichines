@@ -275,6 +275,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361b32ec7ea86284b9c26f5e2eadcb94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canRotate: 1
+  canSell: 1
+  canUpgrade: 1
+  canSetup: 0
+  level: 1
+  sellPrice: 100
+  upgradePrice: 100
+  defaultDirection: 2
+  directionGizmoLength: 1.2
+  directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  currentDirection: 2
 --- !u!65 &519898641011753969
 BoxCollider:
   m_ObjectHideFlags: 0

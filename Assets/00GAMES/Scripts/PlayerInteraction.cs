@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public class PlayerInteraction : MonoBehaviour
     private bool isPointerDownOnInteractable;
     private bool dragStarted;
     private Vector3 pointerDownScreenPosition;
+    private readonly List<RaycastResult> uiRaycastResults = new List<RaycastResult>();
 
     public InteractableObject SelectedInteractable => selectedInteractable;
 
@@ -62,6 +65,14 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandlePointerDown()
     {
+        if (IsPointerOverUI())
+        {
+            isPointerDownOnInteractable = false;
+            dragStarted = false;
+            draggingInteractable = null;
+            return;
+        }
+
         if (!TryGetInteractableFromMouse(out InteractableObject interactable))
         {
             ClearSelection();
@@ -74,6 +85,29 @@ public class PlayerInteraction : MonoBehaviour
         dragStarted = false;
         pointerDownScreenPosition = Input.mousePosition;
         draggingInteractable = interactable;
+    }
+
+    private bool IsPointerOverUI()
+    {
+        EventSystem eventSystem = EventSystem.current;
+        if (eventSystem == null)
+        {
+            return false;
+        }
+
+        if (eventSystem.IsPointerOverGameObject())
+        {
+            return true;
+        }
+
+        PointerEventData pointerEventData = new PointerEventData(eventSystem)
+        {
+            position = Input.mousePosition
+        };
+
+        uiRaycastResults.Clear();
+        eventSystem.RaycastAll(pointerEventData, uiRaycastResults);
+        return uiRaycastResults.Count > 0;
     }
 
     private void SelectInteractable(InteractableObject interactable)
