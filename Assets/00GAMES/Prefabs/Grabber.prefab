@@ -150,10 +150,10 @@ PrefabInstance:
       addedObject: {fileID: -6066139965262200730}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e50c9cb4ab81d39409a9af2de06fbbad, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3189187698891401294}
+      addedObject: {fileID: 6455736370804230993}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e50c9cb4ab81d39409a9af2de06fbbad, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6455736370804230993}
+      addedObject: {fileID: 1912204561754430675}
   m_SourcePrefab: {fileID: 100100000, guid: e50c9cb4ab81d39409a9af2de06fbbad, type: 3}
 --- !u!1 &3918596158370806599 stripped
 GameObject:
@@ -178,29 +178,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &3189187698891401294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3918596158370806599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361b32ec7ea86284b9c26f5e2eadcb94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canRotate: 1
-  canSell: 1
-  canUpgrade: 1
-  canSetup: 0
-  level: 1
-  sellPrice: 100
-  upgradePrice: 100
-  defaultDirection: 1
-  directionGizmoLength: 1.75
-  directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
-  currentDirection: 1
 --- !u!65 &6455736370804230993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -222,6 +199,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1912204561754430675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3918596158370806599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c132336b00f15428114d6df56b9f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canRotate: 1
+  canSell: 1
+  canUpgrade: 1
+  canSetup: 0
+  pushable: 1
+  grabable: 1
+  level: 1
+  sellPrice: 100
+  upgradePrice: 100
+  defaultDirection: 1
+  directionGizmoLength: 1.2
+  directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  itemHolding: {fileID: 0}
+  currentDirection: 1
+  itemPosition: {fileID: 4605553732099536755}
+  grabItemMoveDuration: 0.35
 --- !u!4 &4407465878494814717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e50c9cb4ab81d39409a9af2de06fbbad, type: 3}

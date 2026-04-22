@@ -38,8 +38,13 @@ public class InteractableObject : MonoBehaviour
     [Header("Runtime (Read Only)")]
     [SerializeField] public Item itemHolding = null;
     [SerializeField] private Direction currentDirection;
+    [Header("Item Settings")]
+    [SerializeField]
+    Transform itemPosition;
+    [SerializeField, Min(0.01f)] private float grabItemMoveDuration = 0.35f;
 
     private bool isRotating;
+    private bool itemRestingAtSlot;
 
     public Direction CurrentDirection => currentDirection;
     public Direction DefaultDirection => defaultDirection;
@@ -48,12 +53,119 @@ public class InteractableObject : MonoBehaviour
     void Start()
     {
         ApplyDefaultDirection();
+
+        if (itemHolding != null)
+        {
+            SnapItemToSlot();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (grabable)
+        {
+            Grab();
+        }
+    }
+
+    public void Grab()
+    {
+        if (!grabable || itemHolding != null || itemPosition == null)
+        {
+            return;
+        }
+
+        GameManager gameManager = GameManager.Instance;
+
+        if (gameManager == null)
+        {
+            return;
+        }
+
+        Direction oppositeDirection = GetOppositeDirection(currentDirection);
+        Vector3 dir = GetDirectionVector(oppositeDirection);
+
+        if (!gameManager.TryGetAdjacentGridWorldPosition(transform.position, dir, out Vector3 oppositeGridWorld))
+        {
+            return;
+        }
+
+        InteractableObject opposite = gameManager.GetInteractableAtWorldPosition(oppositeGridWorld, this);
+
+        if (opposite == null)
+        {
+            return;
+        }
+
+        if (opposite is IngreBox box && box.ownItem != null)
+        {
+            Item spawned = Instantiate(box.ownItem, itemPosition.position, itemPosition.rotation, itemPosition);
+            spawned.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            itemHolding = spawned;
+            itemRestingAtSlot = true;
+            return;
+        }
+
+        if (opposite.itemHolding == null || !opposite.isItemInPosition())
+        {
+            return;
+        }
+
+        Item item = opposite.itemHolding;
+        opposite.itemHolding = null;
+        opposite.itemRestingAtSlot = false;
+
+        itemHolding = item;
+        itemRestingAtSlot = false;
+
+        item.transform.DOKill();
+        item.transform.SetParent(itemPosition, true);
+        item.transform.DOLocalMove(Vector3.zero, grabItemMoveDuration)
+            .SetEase(Ease.Linear)
+            .OnComplete(() =>
+            {
+                if (item == null || itemHolding != item || itemPosition == null)
+                {
+                    return;
+                }
+
+                item.transform.SetParent(itemPosition, false);
+                item.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                itemRestingAtSlot = true;
+            });
+    }
+
+    public bool isItemInPosition()
+    {
+        return itemHolding != null
+            && itemPosition != null
+            && itemRestingAtSlot;
+    }
+
+    private void SnapItemToSlot()
+    {
+        if (itemHolding == null || itemPosition == null)
+        {
+            itemRestingAtSlot = false;
+            return;
+        }
+
+        itemHolding.transform.DOKill();
+        itemHolding.transform.SetParent(itemPosition, false);
+        itemHolding.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        itemRestingAtSlot = true;
+    }
+
+    private static Direction GetOppositeDirection(Direction direction)
+    {
+        return direction switch
+        {
+            Direction.Up => Direction.Down,
+            Direction.Right => Direction.Left,
+            Direction.Down => Direction.Up,
+            Direction.Left => Direction.Right,
+            _ => Direction.Down
+        };
     }
     public void Rotate()
     {
