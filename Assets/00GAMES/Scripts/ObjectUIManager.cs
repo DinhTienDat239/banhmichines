@@ -201,7 +201,7 @@ public class ObjectUIManager : Singleton<ObjectUIManager>
             upgradeBtn.onClick.RemoveAllListeners();
             if (interactableObject != null)
             {
-                upgradeBtn.onClick.AddListener(interactableObject.Upgrade);
+                upgradeBtn.onClick.AddListener(interactableObject.LevelUp);
             }
         }
     }

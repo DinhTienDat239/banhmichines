@@ -5,10 +5,15 @@ using System.Collections.Generic;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private InteractableObject[] interactableObjects;
+    [SerializeField] public Item[] allowSetUpSmartGrabItemList;
+    [SerializeField] public Item[] allowSetUpCombineItemList;
     [SerializeField] private Transform gridParent;
     [SerializeField] private Vector3[] gridPositions;
     [SerializeField, Min(0.001f)] private float positionTolerance = 0.05f;
     [SerializeField] public bool isRunning = false;
+
+    [Header("Time of Game Settings")]
+    public float ingreBoxCoolDown = 1f;
     public void LoadGridPositions()
     {
         if (gridParent == null)

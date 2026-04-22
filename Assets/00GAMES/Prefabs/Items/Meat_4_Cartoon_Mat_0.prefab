@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3961746096396893030}
-  - component: {fileID: 908257694213806282}
-  - component: {fileID: 7863900677046942473}
   - component: {fileID: 3319332158196755199}
   m_Layer: 0
   m_Name: Meat_4_Cartoon_Mat_0
@@ -28,27 +26,82 @@ Transform:
   m_GameObject: {fileID: 397127694411001251}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.317036, y: 0, z: -2}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1242876282121717648}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &908257694213806282
+--- !u!114 &3319332158196755199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397127694411001251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f19b046ca93a84f8c6f8431f4055b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canChop: 1
+  afterChopItem: {fileID: -6358094117521124568, guid: af31b99beaa338943ac9ea2053c1b62c, type: 3}
+  canHob: 0
+  afterHobItem: {fileID: 0}
+  canHandMachine: 0
+  afterHandMachineItem: {fileID: 0}
+  canOven: 1
+  afterOvenItem: {fileID: 0}
+  canCombine: 0
+--- !u!1 &1906225268204231978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1242876282121717648}
+  - component: {fileID: 2778807771268679733}
+  - component: {fileID: 104912891588672767}
+  m_Layer: 0
+  m_Name: Meshy_AI_Marbled_Pink_Block_0422143606_texture
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1242876282121717648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906225268204231978}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3961746096396893030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2778807771268679733
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 397127694411001251}
-  m_Mesh: {fileID: 5641104262129278401, guid: 1c00e587094d2064fa7b8a5314aeeea6, type: 3}
---- !u!23 &7863900677046942473
+  m_GameObject: {fileID: 1906225268204231978}
+  m_Mesh: {fileID: 5461320835613783329, guid: 3f6ba9c64c64bbd47bca233240ecae70, type: 3}
+--- !u!23 &104912891588672767
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 397127694411001251}
+  m_GameObject: {fileID: 1906225268204231978}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -65,7 +118,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5758075991613784322, guid: 1c00e587094d2064fa7b8a5314aeeea6, type: 3}
+  - {fileID: 2100000, guid: 66cd4c14ff1667647996834662556a98, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,15 +140,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3319332158196755199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 397127694411001251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20f19b046ca93a84f8c6f8431f4055b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

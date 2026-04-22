@@ -23,6 +23,8 @@ public class InteractableObject : MonoBehaviour
     [SerializeField]
     public bool pushable = false;
     [SerializeField]
+    public bool allowPushIn = false;
+    [SerializeField]
     public bool grabable = false;
     [Header("Interactable Object values")]
     [SerializeField]
@@ -45,6 +47,7 @@ public class InteractableObject : MonoBehaviour
 
     private bool isRotating;
     private bool itemRestingAtSlot;
+    private float nextIngreBoxGrabTime;
 
     public Direction CurrentDirection => currentDirection;
     public Direction DefaultDirection => defaultDirection;
@@ -66,8 +69,12 @@ public class InteractableObject : MonoBehaviour
         {
             Grab();
         }
-    }
 
+        if (pushable)
+        {
+            Push();
+        }
+    }
     public void Grab()
     {
         if (!grabable || itemHolding != null || itemPosition == null)
@@ -99,10 +106,16 @@ public class InteractableObject : MonoBehaviour
 
         if (opposite is IngreBox box && box.ownItem != null)
         {
+            if (Time.time < nextIngreBoxGrabTime)
+            {
+                return;
+            }
+
             Item spawned = Instantiate(box.ownItem, itemPosition.position, itemPosition.rotation, itemPosition);
             spawned.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             itemHolding = spawned;
             itemRestingAtSlot = true;
+            nextIngreBoxGrabTime = Time.time + Mathf.Max(0f, gameManager.ingreBoxCoolDown);
             return;
         }
 
@@ -132,6 +145,58 @@ public class InteractableObject : MonoBehaviour
                 item.transform.SetParent(itemPosition, false);
                 item.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                 itemRestingAtSlot = true;
+            });
+    }
+
+    public void Push()
+    {
+        if (!pushable || itemHolding == null || itemPosition == null || !isItemInPosition())
+        {
+            return;
+        }
+
+        GameManager gameManager = GameManager.Instance;
+
+        if (gameManager == null)
+        {
+            return;
+        }
+
+        Vector3 dir = GetDirectionVector(currentDirection);
+
+        if (!gameManager.TryGetAdjacentGridWorldPosition(transform.position, dir, out Vector3 targetGridWorld))
+        {
+            return;
+        }
+
+        InteractableObject target = gameManager.GetInteractableAtWorldPosition(targetGridWorld, this);
+
+        if (target == null || !target.allowPushIn || target.itemHolding != null || target.itemPosition == null)
+        {
+            return;
+        }
+
+        Item item = itemHolding;
+        itemHolding = null;
+        itemRestingAtSlot = false;
+
+        target.itemHolding = item;
+        target.itemRestingAtSlot = false;
+
+        item.transform.DOKill();
+        item.transform.SetParent(target.itemPosition, true);
+        item.transform.DOLocalMove(Vector3.zero, grabItemMoveDuration)
+            .SetEase(Ease.Linear)
+            .OnComplete(() =>
+            {
+                if (item == null || target == null || target.itemHolding != item || target.itemPosition == null)
+                {
+                    return;
+                }
+
+                item.transform.SetParent(target.itemPosition, false);
+                item.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                target.itemRestingAtSlot = true;
             });
     }
 
@@ -191,7 +256,7 @@ public class InteractableObject : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    public void Upgrade()
+    public virtual void LevelUp()
     {
         level++;
     }
@@ -250,6 +315,15 @@ public class InteractableObject : MonoBehaviour
     {
         defaultDirection = GetDirectionFromYaw(transform.eulerAngles.y);
         currentDirection = defaultDirection;
+    }
+
+    public void RotateDesignLevel90()
+    {
+        Direction nextDirection = GetNextDirection(defaultDirection);
+        defaultDirection = nextDirection;
+        currentDirection = nextDirection;
+
+        transform.Rotate(0f, 90f, 0f, Space.Self);
     }
 
     private void OnDrawGizmos()
