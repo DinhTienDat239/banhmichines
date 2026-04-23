@@ -24,6 +24,8 @@ public class Oven : InteractableObject
 
     void Update()
     {
+        if(!GameManager.Instance.isRunning)
+            return;
         if (grabable)
         {
             Grab();

@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9223328286276013116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7242241886400605814}
+  - component: {fileID: 7594121445791573636}
+  m_Layer: 0
+  m_Name: ----GAME MANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7242241886400605814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9223328286276013116}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.0123487, y: 4.4212723, z: -6.2412324}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7594121445791573636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9223328286276013116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f35eb999795a048aa8254b2a4c8ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persistAcrossScenes: 0
+  interactableObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  allowSetUpSmartGrabItemList: []
+  allowSetUpCombineItemList: []
+  gridParent: {fileID: 0}
+  gridPositions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: -2}
+  - {x: 2, y: 0, z: -2}
+  - {x: 4, y: 0, z: -2}
+  - {x: 6, y: 0, z: -2}
+  - {x: 8, y: 0, z: -2}
+  - {x: 6, y: 0, z: 0}
+  - {x: 6, y: 0, z: 2}
+  - {x: 8, y: 0, z: 2}
+  - {x: 8, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 4, y: 0, z: 0}
+  - {x: 0, y: 0, z: 2}
+  - {x: 2, y: 0, z: 2}
+  - {x: 4, y: 0, z: 2}
+  - {x: -10, y: 0, z: 0}
+  - {x: -10, y: 0, z: -2}
+  - {x: -8, y: 0, z: -2}
+  - {x: -6, y: 0, z: -2}
+  - {x: -4, y: 0, z: -2}
+  - {x: -2, y: 0, z: -2}
+  - {x: -4, y: 0, z: 0}
+  - {x: -4, y: 0, z: 2}
+  - {x: -2, y: 0, z: 2}
+  - {x: -2, y: 0, z: 0}
+  - {x: -8, y: 0, z: 0}
+  - {x: -6, y: 0, z: 0}
+  - {x: -10, y: 0, z: 2}
+  - {x: -8, y: 0, z: 2}
+  - {x: -6, y: 0, z: 2}
+  - {x: 0, y: 0, z: -6}
+  - {x: 0, y: 0, z: -8}
+  - {x: 2, y: 0, z: -8}
+  - {x: 4, y: 0, z: -8}
+  - {x: 6, y: 0, z: -8}
+  - {x: 8, y: 0, z: -8}
+  - {x: 6, y: 0, z: -6}
+  - {x: 6, y: 0, z: -4}
+  - {x: 8, y: 0, z: -4}
+  - {x: 8, y: 0, z: -6}
+  - {x: 2, y: 0, z: -6}
+  - {x: 4, y: 0, z: -6}
+  - {x: 0, y: 0, z: -4}
+  - {x: 2, y: 0, z: -4}
+  - {x: 4, y: 0, z: -4}
+  - {x: -10, y: 0, z: -6}
+  - {x: -10, y: 0, z: -8}
+  - {x: -8, y: 0, z: -8}
+  - {x: -6, y: 0, z: -8}
+  - {x: -4, y: 0, z: -8}
+  - {x: -2, y: 0, z: -8}
+  - {x: -4, y: 0, z: -6}
+  - {x: -4, y: 0, z: -4}
+  - {x: -2, y: 0, z: -4}
+  - {x: -2, y: 0, z: -6}
+  - {x: -8, y: 0, z: -6}
+  - {x: -6, y: 0, z: -6}
+  - {x: -10, y: 0, z: -4}
+  - {x: -8, y: 0, z: -4}
+  - {x: -6, y: 0, z: -4}
+  positionTolerance: 0.05
+  ingreBoxCoolDown: 1
+  isRunning: 0

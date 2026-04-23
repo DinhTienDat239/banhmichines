@@ -124,7 +124,7 @@ public class PlayerInteraction : MonoBehaviour
         SetOutline(selectedOutline, true);
     }
 
-    private void ClearSelection()
+    public void ClearSelection()
     {
         SetOutline(selectedOutline, false);
         selectedOutline = null;

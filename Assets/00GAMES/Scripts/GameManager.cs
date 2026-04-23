@@ -1,6 +1,7 @@
 using UnityEngine;
 using DAT.Core.DesignPatterns;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -10,10 +11,20 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private Transform gridParent;
     [SerializeField] private Vector3[] gridPositions;
     [SerializeField, Min(0.001f)] private float positionTolerance = 0.05f;
-    [SerializeField] public bool isRunning = false;
+    
 
     [Header("Time of Game Settings")]
     public float ingreBoxCoolDown = 1f;
+    [Header("Runtime boolean")]
+    [SerializeField] public bool isRunning = false;
+
+    public void Run(){
+        isRunning = true;
+    }
+    public void RestartLevel(){
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.buildIndex);
+    }
     public void LoadGridPositions()
     {
         if (gridParent == null)

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8011668062133261077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9083721619817347405}
+  m_Layer: 0
+  m_Name: ItemPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9083721619817347405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8011668062133261077}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3877446132125075298}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &542397014240315954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,8 +174,8 @@ PrefabInstance:
       value: Oven
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: -5754084199372789682, guid: f60c1c32a8a18324d9ded9940861e49b, type: 3}
     - {fileID: -7511558181221131132, guid: f60c1c32a8a18324d9ded9940861e49b, type: 3}
+    - {fileID: -5754084199372789682, guid: f60c1c32a8a18324d9ded9940861e49b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f60c1c32a8a18324d9ded9940861e49b, type: 3}
@@ -153,16 +184,19 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f60c1c32a8a18324d9ded9940861e49b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3450579137048025}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f60c1c32a8a18324d9ded9940861e49b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9083721619817347405}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f60c1c32a8a18324d9ded9940861e49b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3542436169120073203}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f60c1c32a8a18324d9ded9940861e49b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7040955492724187997}
+      addedObject: {fileID: 6914605198562023147}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f60c1c32a8a18324d9ded9940861e49b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6914605198562023147}
+      addedObject: {fileID: 5232905163037942436}
   m_SourcePrefab: {fileID: 100100000, guid: f60c1c32a8a18324d9ded9940861e49b, type: 3}
 --- !u!4 &3877446132125075298 stripped
 Transform:
@@ -192,35 +226,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &7040955492724187997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504905959788207576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361b32ec7ea86284b9c26f5e2eadcb94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canRotate: 1
-  canSell: 1
-  canUpgrade: 1
-  canSetup: 0
-  pushable: 0
-  allowPushIn: 1
-  grabable: 0
-  level: 1
-  sellPrice: 100
-  upgradePrice: 100
-  defaultDirection: 0
-  directionGizmoLength: 1.2
-  directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
-  itemHolding: {fileID: 0}
-  currentDirection: 0
-  itemPosition: {fileID: 0}
-  grabItemMoveDuration: 0.35
 --- !u!65 &6914605198562023147
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -242,6 +247,39 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.8, z: 1.4}
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &5232905163037942436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4504905959788207576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2a73a291740c146b903c982f3db87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canRotate: 1
+  canSell: 1
+  canUpgrade: 1
+  canSetup: 0
+  pushable: 0
+  allowPushIn: 1
+  grabable: 0
+  level: 1
+  sellPrice: 100
+  upgradePrice: 100
+  disableWhenRunObjects: []
+  defaultDirection: 2
+  directionGizmoLength: 1.2
+  directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  itemHolding: {fileID: 0}
+  currentDirection: 2
+  itemPosition: {fileID: 9083721619817347405}
+  grabItemMoveDuration: 0.35
+  itemRestingAtSlot: 0
+  ovenTime: 3
+  ovenFX: {fileID: 4296994086180120376}
 --- !u!1001 &7852985733446230996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -345,6 +383,11 @@ PrefabInstance:
 --- !u!4 &4296994086180120373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6294508013172393185, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
+  m_PrefabInstance: {fileID: 7852985733446230996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4296994086180120376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6294508013172393196, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
   m_PrefabInstance: {fileID: 7852985733446230996}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4655960912043314116 stripped

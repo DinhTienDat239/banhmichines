@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -33,21 +34,23 @@ public class InteractableObject : MonoBehaviour
     public int sellPrice = 100;
     [SerializeField]
     public int upgradePrice = 100;
+    [SerializeField]
+    List<GameObject> disableWhenRunObjects;
     [Header("Direction Settings")]
     [SerializeField] private Direction defaultDirection = Direction.Up;
     [SerializeField] private float directionGizmoLength = 1.2f;
     [SerializeField] private Color directionGizmoColor = Color.cyan;
     [Header("Runtime (Read Only)")]
     [SerializeField] public Item itemHolding = null;
-    [SerializeField] private Direction currentDirection;
+    [SerializeField] protected Direction currentDirection;
     [Header("Item Settings")]
     [SerializeField]
-    Transform itemPosition;
-    [SerializeField, Min(0.01f)] private float grabItemMoveDuration = 0.35f;
+    public Transform itemPosition;
+    [SerializeField, Min(0.01f)] public float grabItemMoveDuration = 0.35f;
 
-    private bool isRotating;
-    private bool itemRestingAtSlot;
-    private float nextIngreBoxGrabTime;
+    protected bool isRotating;
+    public bool itemRestingAtSlot;
+    protected float nextIngreBoxGrabTime;
 
     public Direction CurrentDirection => currentDirection;
     public Direction DefaultDirection => defaultDirection;
@@ -65,6 +68,12 @@ public class InteractableObject : MonoBehaviour
 
     void Update()
     {
+        if(!GameManager.Instance.isRunning)
+            return;
+        foreach(var obj in disableWhenRunObjects){
+            if(obj.activeSelf)
+                obj.SetActive(false);
+        }
         if (grabable)
         {
             Grab();
@@ -74,8 +83,9 @@ public class InteractableObject : MonoBehaviour
         {
             Push();
         }
+
     }
-    public void Grab()
+    public virtual void Grab()
     {
         if (!grabable || itemHolding != null || itemPosition == null)
         {
@@ -221,7 +231,7 @@ public class InteractableObject : MonoBehaviour
         itemRestingAtSlot = true;
     }
 
-    private static Direction GetOppositeDirection(Direction direction)
+    public static Direction GetOppositeDirection(Direction direction)
     {
         return direction switch
         {
@@ -261,19 +271,19 @@ public class InteractableObject : MonoBehaviour
         level++;
     }
 
-    private void ApplyDefaultDirection()
+    protected void ApplyDefaultDirection()
     {
         currentDirection = defaultDirection;
     }
 
-    private Direction GetDirectionFromYaw(float yRotation)
+    protected Direction GetDirectionFromYaw(float yRotation)
     {
         int step = Mathf.RoundToInt(yRotation / 90f);
         step = ((step % 4) + 4) % 4;
         return (Direction)step;
     }
 
-    private Direction GetNextDirection(Direction direction)
+    protected Direction GetNextDirection(Direction direction)
     {
         return direction switch
         {
@@ -285,7 +295,7 @@ public class InteractableObject : MonoBehaviour
         };
     }
 
-    private Vector3 GetDirectionVector(Direction direction)
+    protected Vector3 GetDirectionVector(Direction direction)
     {
         return direction switch
         {
@@ -297,7 +307,7 @@ public class InteractableObject : MonoBehaviour
         };
     }
 
-    private void OnValidate()
+    protected void OnValidate()
     {
         if (directionGizmoLength < 0.1f)
         {
@@ -311,7 +321,7 @@ public class InteractableObject : MonoBehaviour
     }
 
     [ContextMenu("Sync Default Direction From Current Rotation")]
-    private void SyncDefaultDirectionFromCurrentRotation()
+    protected void SyncDefaultDirectionFromCurrentRotation()
     {
         defaultDirection = GetDirectionFromYaw(transform.eulerAngles.y);
         currentDirection = defaultDirection;
@@ -326,7 +336,7 @@ public class InteractableObject : MonoBehaviour
         transform.Rotate(0f, 90f, 0f, Space.Self);
     }
 
-    private void OnDrawGizmos()
+    protected void OnDrawGizmos()
     {
         Gizmos.color = directionGizmoColor;
 

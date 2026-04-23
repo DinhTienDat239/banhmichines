@@ -5,13 +5,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ObjectUIManager : Singleton<ObjectUIManager>
-{
+{   [Header("GameUI")]
+    [SerializeField]
+    Button runBtn;
+    [SerializeField]
+    Button restartBtn;
+    [Header("Object Panel")]
     [SerializeField] public Image fullPanel;
     [SerializeField] public Image buttonsPanel;
     [SerializeField] public Button rotateBtn;
     [SerializeField] public Button sellBtn;
     [SerializeField] public Button upgradeBtn;
     [SerializeField] public Image setupPanel;
+    [SerializeField] public RectTransform setupContainer;
+    [SerializeField] public GameObject UISetupItemSelectionPref;
     [SerializeField] private PlayerInteraction playerInteraction;
     [SerializeField] private Camera worldCamera;
     [SerializeField] private Vector3 fullPanelWorldOffset = new Vector3(0f, 1.5f, 0f);
@@ -69,7 +76,9 @@ public class ObjectUIManager : Singleton<ObjectUIManager>
 
         fadeCoroutines.Clear();
     }
-
+    public void UIRun(){
+        runBtn.enabled = false;
+    }
     private void SyncSelectionFromPlayerInteraction()
     {
         if (playerInteraction == null)
@@ -202,6 +211,8 @@ public class ObjectUIManager : Singleton<ObjectUIManager>
             if (interactableObject != null)
             {
                 upgradeBtn.onClick.AddListener(interactableObject.LevelUp);
+                upgradeBtn.onClick.AddListener(this.HideUI);
+                upgradeBtn.onClick.AddListener(playerInteraction.ClearSelection);
             }
         }
     }
@@ -210,7 +221,25 @@ public class ObjectUIManager : Singleton<ObjectUIManager>
     {
         if (shouldShow)
         {
+            if(target == setupPanel.gameObject){
+                foreach(Transform transform in setupContainer){
+                    Destroy(transform.gameObject);
+                }
+                if(displayedInteractable.GetComponent<Grabber>()){
+                    Grabber grabber = displayedInteractable.GetComponent<Grabber>();
+                    if(grabber.isSmartGrabber){
+                        foreach(Item item in GameManager.Instance.allowSetUpSmartGrabItemList){
+                            UISetupItemSelection button = Instantiate(UISetupItemSelectionPref,setupContainer).GetComponent<UISetupItemSelection>();
+                            button.itemIconSprite = item.itemIcon;
+                            button.gameObject.SetActive(true);
+                            button.itemName = item.itemName;
+                            button.selectOwner = displayedInteractable;
+                        }
+                    }
+                }
+            }
             FadeIn(target);
+
         }
         else
         {

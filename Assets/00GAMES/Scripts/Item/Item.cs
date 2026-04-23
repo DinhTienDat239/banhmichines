@@ -4,6 +4,10 @@ public class Item : MonoBehaviour
 {
     [Header("Item Settings")]
     [SerializeField]
+    public string itemName;
+    [SerializeField]
+    public Sprite itemIcon;
+    [SerializeField]
     public bool canChop;
     [SerializeField]
     public Item afterChopItem;
