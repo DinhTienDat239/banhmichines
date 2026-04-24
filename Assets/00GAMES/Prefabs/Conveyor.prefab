@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canRotate: 1
   canSell: 1
-  canUpgrade: 1
+  canUpgrade: 0
   canSetup: 0
   pushable: 1
   allowPushIn: 1
@@ -330,6 +330,7 @@ MonoBehaviour:
   level: 1
   sellPrice: 100
   upgradePrice: 100
+  disableWhenRunObjects: []
   defaultDirection: 1
   directionGizmoLength: 1.5
   directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
@@ -337,6 +338,7 @@ MonoBehaviour:
   currentDirection: 1
   itemPosition: {fileID: 453625754738977383}
   grabItemMoveDuration: 0.35
+  itemRestingAtSlot: 0
 --- !u!65 &5820372569406862414
 BoxCollider:
   m_ObjectHideFlags: 0
