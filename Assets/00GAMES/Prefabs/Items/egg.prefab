@@ -99,14 +99,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f19b046ca93a84f8c6f8431f4055b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: trung
+  itemName: Egg
   itemIcon: {fileID: 21300000, guid: 72c3f94073378804b8ba5938c3fa231c, type: 3}
   canChop: 0
   afterChopItem: {fileID: 0}
   canHob: 0
   afterHobItem: {fileID: 0}
-  canHandMachine: 0
-  afterHandMachineItem: {fileID: 0}
+  canMix: 1
+  afterMix: {fileID: 8093821618897538716, guid: 71500f7568c15144eb4aa772ff68aeb9, type: 3}
   canOven: 0
   afterOvenItem: {fileID: 0}
+  canXaxiu: 0
+  afterXaxiuItem: {fileID: 0}
   canCombine: 0
+  combinedFromList: []

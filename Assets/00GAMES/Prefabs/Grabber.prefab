@@ -543,10 +543,10 @@ PrefabInstance:
       addedObject: {fileID: -6066139965262200730}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e50c9cb4ab81d39409a9af2de06fbbad, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6455736370804230993}
+      addedObject: {fileID: 1912204561754430675}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e50c9cb4ab81d39409a9af2de06fbbad, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1912204561754430675}
+      addedObject: {fileID: 2176648681930819386}
   m_SourcePrefab: {fileID: 100100000, guid: e50c9cb4ab81d39409a9af2de06fbbad, type: 3}
 --- !u!1 &3918596158370806599 stripped
 GameObject:
@@ -571,27 +571,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!65 &6455736370804230993
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3918596158370806599}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1912204561754430675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,21 +590,47 @@ MonoBehaviour:
   pushable: 1
   allowPushIn: 1
   grabable: 1
+  objectName: Grabber
+  objectDescription: A high tech grabber convenyor. Grab ANYTHING behind and bring
+    it forward.
+  objectIcon: {fileID: 21300000, guid: ef0ced9175e477b48b1b0516c7bb2771, type: 3}
   level: 1
   sellPrice: 100
   upgradePrice: 100
+  disableWhenRunObjects: []
   defaultDirection: 3
   directionGizmoLength: 1.2
   directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
   itemHolding: {fileID: 0}
   currentDirection: 3
   itemPosition: {fileID: 1540151461169035522}
-  grabItemMoveDuration: 0.35
+  grabItemMoveDuration: 1
   itemRestingAtSlot: 0
   isSmartGrabber: 0
   allowToGrabObject: 
   grabberHand: {fileID: 8608610209459100067}
   smartGrabberHand: {fileID: 1008154159552014679}
+--- !u!65 &2176648681930819386
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3918596158370806599}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.84235805}
+  m_Center: {x: 0, y: 0.52, z: -0.0019224584}
 --- !u!4 &4407465878494814717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e50c9cb4ab81d39409a9af2de06fbbad, type: 3}

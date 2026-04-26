@@ -28,6 +28,13 @@ public class InteractableObject : MonoBehaviour
     [SerializeField]
     public bool grabable = false;
     [Header("Interactable Object values")]
+
+    [SerializeField]
+    public string objectName = "";
+    [SerializeField]
+    public string objectDescription = "";
+    [SerializeField]
+    public Sprite objectIcon = null;
     [SerializeField]
     public int level = 1;
     [SerializeField]
@@ -35,7 +42,7 @@ public class InteractableObject : MonoBehaviour
     [SerializeField]
     public int upgradePrice = 100;
     [SerializeField]
-    List<GameObject> disableWhenRunObjects;
+    public List<GameObject> disableWhenRunObjects;
     [Header("Direction Settings")]
     [SerializeField] private Direction defaultDirection = Direction.Up;
     [SerializeField] private float directionGizmoLength = 1.2f;
@@ -121,8 +128,10 @@ public class InteractableObject : MonoBehaviour
                 return;
             }
 
-            Item spawned = Instantiate(box.ownItem, itemPosition.position, itemPosition.rotation, itemPosition);
-            spawned.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            Item spawned = Instantiate(box.ownItem, itemPosition);
+            spawned.transform.localPosition = Vector3.zero;
+            spawned.transform.localRotation = box.ownItem.transform.localRotation;
+            ApplyDesiredWorldScale(spawned.transform, box.ownItem.transform.localScale);
             itemHolding = spawned;
             itemRestingAtSlot = true;
             nextIngreBoxGrabTime = Time.time + Mathf.Max(0f, gameManager.ingreBoxCoolDown);
@@ -141,6 +150,8 @@ public class InteractableObject : MonoBehaviour
         itemHolding = item;
         itemRestingAtSlot = false;
 
+        Quaternion worldRot = item.transform.rotation;
+        Vector3 worldScale = item.transform.lossyScale;
         item.transform.DOKill();
         item.transform.SetParent(itemPosition, true);
         item.transform.DOLocalMove(Vector3.zero, grabItemMoveDuration)
@@ -153,12 +164,14 @@ public class InteractableObject : MonoBehaviour
                 }
 
                 item.transform.SetParent(itemPosition, false);
-                item.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                item.transform.localPosition = Vector3.zero;
+                item.transform.rotation = worldRot;
+                ApplyDesiredWorldScale(item.transform, worldScale);
                 itemRestingAtSlot = true;
             });
     }
 
-    public void Push()
+    public virtual void Push()
     {
         if (!pushable || itemHolding == null || itemPosition == null || !isItemInPosition())
         {
@@ -185,28 +198,53 @@ public class InteractableObject : MonoBehaviour
         {
             return;
         }
-
+        bool collectedObject = false;
+        if(target.GetComponent<Combiner>() != null){
+            Combiner combiner = target.GetComponent<Combiner>();
+            foreach(Item i in combiner.itemCollectedList){
+                if(i.itemName == itemHolding.itemName){
+                    return;
+                }
+            }
+            combiner.itemCollectedList.Add(itemHolding);
+            collectedObject = true;
+        }
         Item item = itemHolding;
         itemHolding = null;
         itemRestingAtSlot = false;
+        
+        if(!collectedObject){
+            target.itemHolding = item;
+            target.itemRestingAtSlot = false;
+        }
 
-        target.itemHolding = item;
-        target.itemRestingAtSlot = false;
-
+        Quaternion worldRot = item.transform.rotation;
+        Vector3 worldScale = item.transform.lossyScale;
         item.transform.DOKill();
         item.transform.SetParent(target.itemPosition, true);
         item.transform.DOLocalMove(Vector3.zero, grabItemMoveDuration)
             .SetEase(Ease.Linear)
             .OnComplete(() =>
             {
+                if(collectedObject){
+                target.GetComponent<Combiner>().CheckCombine();
+                Destroy(item.gameObject);
+                }
+                
                 if (item == null || target == null || target.itemHolding != item || target.itemPosition == null)
                 {
                     return;
                 }
 
                 item.transform.SetParent(target.itemPosition, false);
-                item.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                item.transform.localPosition = Vector3.zero;
+                item.transform.rotation = worldRot;
+                ApplyDesiredWorldScale(item.transform, worldScale);
                 target.itemRestingAtSlot = true;
+                if(target is Dish dish){
+                    GameManager.Instance.CheckWin();
+                }
+               
             });
     }
 
@@ -225,10 +263,45 @@ public class InteractableObject : MonoBehaviour
             return;
         }
 
+        Quaternion worldRot = itemHolding.transform.rotation;
+        Vector3 worldScale = itemHolding.transform.lossyScale;
         itemHolding.transform.DOKill();
         itemHolding.transform.SetParent(itemPosition, false);
-        itemHolding.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        itemHolding.transform.localPosition = Vector3.zero;
+        itemHolding.transform.rotation = worldRot;
+        ApplyDesiredWorldScale(itemHolding.transform, worldScale);
         itemRestingAtSlot = true;
+    }
+
+    private static void ApplyDesiredWorldScale(Transform target, Vector3 desiredWorldScale)
+    {
+        if (target == null)
+        {
+            return;
+        }
+
+        Transform parent = target.parent;
+        if (parent == null)
+        {
+            target.localScale = desiredWorldScale;
+            return;
+        }
+
+        Vector3 parentWorldScale = parent.lossyScale;
+        target.localScale = new Vector3(
+            SafeDivide(desiredWorldScale.x, parentWorldScale.x),
+            SafeDivide(desiredWorldScale.y, parentWorldScale.y),
+            SafeDivide(desiredWorldScale.z, parentWorldScale.z));
+    }
+
+    private static float SafeDivide(float value, float divisor)
+    {
+        if (Mathf.Approximately(divisor, 0f))
+        {
+            return value;
+        }
+
+        return value / divisor;
     }
 
     public static Direction GetOppositeDirection(Direction direction)
@@ -264,10 +337,17 @@ public class InteractableObject : MonoBehaviour
     }
     public void Sell()
     {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.startMoney += sellPrice;
+            GameManager.Instance.RemoveInteractableObject(this);
+        }
+
         Destroy(gameObject);
     }
     public virtual void LevelUp()
     {
+        sellPrice += upgradePrice;
         level++;
     }
 

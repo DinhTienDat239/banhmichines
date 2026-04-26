@@ -98,10 +98,10 @@ PrefabInstance:
       addedObject: {fileID: 6851107591508022929}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3bee34e6c17f0a044a1f0d192e63fd9e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9010847246375362623}
+      addedObject: {fileID: 2134649769622843496}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3bee34e6c17f0a044a1f0d192e63fd9e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2134649769622843496}
+      addedObject: {fileID: 9084348311386999096}
   m_SourcePrefab: {fileID: 100100000, guid: 3bee34e6c17f0a044a1f0d192e63fd9e, type: 3}
 --- !u!1 &7476778782811801612 stripped
 GameObject:
@@ -126,35 +126,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &9010847246375362623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7476778782811801612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361b32ec7ea86284b9c26f5e2eadcb94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canRotate: 1
-  canSell: 1
-  canUpgrade: 1
-  canSetup: 0
-  pushable: 0
-  allowPushIn: 1
-  grabable: 0
-  level: 1
-  sellPrice: 100
-  upgradePrice: 100
-  defaultDirection: 0
-  directionGizmoLength: 2
-  directionGizmoColor: {r: 1, g: 0.09965846, b: 0, a: 1}
-  itemHolding: {fileID: 0}
-  currentDirection: 0
-  itemPosition: {fileID: 8428060953107753581}
-  grabItemMoveDuration: 0.35
 --- !u!65 &2134649769622843496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -176,6 +147,42 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 1.2076882, z: 2.287856}
   m_Center: {x: 0, y: 0.6038441, z: 0.11392769}
+--- !u!114 &9084348311386999096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476778782811801612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d1acf4d7a982341a733ee03818b600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canRotate: 1
+  canSell: 1
+  canUpgrade: 0
+  canSetup: 0
+  pushable: 0
+  allowPushIn: 1
+  grabable: 0
+  objectName: Hob
+  objectDescription: A high tech hob. Automatically cook anything to it's finest
+  objectIcon: {fileID: 21300000, guid: 2a8dbcf1a7c23804eae909fa1d0edc2d, type: 3}
+  level: 1
+  sellPrice: 400
+  upgradePrice: 100
+  disableWhenRunObjects: []
+  defaultDirection: 0
+  directionGizmoLength: 1.2
+  directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  itemHolding: {fileID: 0}
+  currentDirection: 0
+  itemPosition: {fileID: 8428060953107753581}
+  grabItemMoveDuration: 0.35
+  itemRestingAtSlot: 0
+  hobTime: 2.5
+  hobFX: {fileID: 3385020103828188432}
 --- !u!4 &7820793347292566198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3bee34e6c17f0a044a1f0d192e63fd9e, type: 3}
@@ -269,6 +276,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5566784636933870636}
   m_SourcePrefab: {fileID: 100100000, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
+--- !u!1 &3385020103828188432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6294508013172393196, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
+  m_PrefabInstance: {fileID: 8764168056755825148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3385020103828188445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6294508013172393185, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}

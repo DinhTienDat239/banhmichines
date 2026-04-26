@@ -45,17 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f19b046ca93a84f8c6f8431f4055b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: thitlon
+  itemName: Pork
   itemIcon: {fileID: 21300000, guid: c0801622256372340a263bd143cd3e0c, type: 3}
   canChop: 1
   afterChopItem: {fileID: -6358094117521124568, guid: af31b99beaa338943ac9ea2053c1b62c, type: 3}
   canHob: 0
   afterHobItem: {fileID: 0}
-  canHandMachine: 0
-  afterHandMachineItem: {fileID: 0}
+  canMix: 0
+  afterMix: {fileID: 0}
   canOven: 0
   afterOvenItem: {fileID: 0}
+  canXaxiu: 1
+  afterXaxiuItem: {fileID: 1023897496393509272, guid: 976b2d0d8713861409f6b5ef2fc1f608, type: 3}
   canCombine: 0
+  combinedFromList: []
 --- !u!1 &1906225268204231978
 GameObject:
   m_ObjectHideFlags: 0

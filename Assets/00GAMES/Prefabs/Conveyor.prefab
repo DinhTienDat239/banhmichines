@@ -191,6 +191,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f1da2e5f1bc80b14e8545c57f629fd9a, type: 3}
   m_PrefabInstance: {fileID: 4002941527559321122}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4272833911024257907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f1da2e5f1bc80b14e8545c57f629fd9a, type: 3}
+  m_PrefabInstance: {fileID: 4002941527559321122}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8543638179573914672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -327,17 +332,21 @@ MonoBehaviour:
   pushable: 1
   allowPushIn: 1
   grabable: 0
+  objectName: Convenyor
+  objectDescription: Simple. Cheap. Push anything forward.
+  objectIcon: {fileID: 21300000, guid: 963fb6defe8212f43b6973506ab6001b, type: 3}
   level: 1
-  sellPrice: 100
+  sellPrice: 50
   upgradePrice: 100
-  disableWhenRunObjects: []
+  disableWhenRunObjects:
+  - {fileID: 4272833911024257907}
   defaultDirection: 1
   directionGizmoLength: 1.5
   directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
   itemHolding: {fileID: 0}
   currentDirection: 1
   itemPosition: {fileID: 453625754738977383}
-  grabItemMoveDuration: 0.35
+  grabItemMoveDuration: 1
   itemRestingAtSlot: 0
 --- !u!65 &5820372569406862414
 BoxCollider:
@@ -358,5 +367,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.5377636, z: 1}
+  m_Center: {x: 0, y: 0.23111819, z: 0}

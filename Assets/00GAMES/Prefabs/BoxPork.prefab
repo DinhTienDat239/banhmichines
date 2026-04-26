@@ -324,9 +324,13 @@ MonoBehaviour:
   pushable: 0
   allowPushIn: 0
   grabable: 0
+  objectName: Pork Box
+  objectDescription: A box full of of prepared pork block
+  objectIcon: {fileID: 21300000, guid: 4fa05ea5406f65146ac53e9b6024cae1, type: 3}
   level: 1
   sellPrice: 100
   upgradePrice: 100
+  disableWhenRunObjects: []
   defaultDirection: 0
   directionGizmoLength: 1.2
   directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
@@ -334,6 +338,7 @@ MonoBehaviour:
   currentDirection: 0
   itemPosition: {fileID: 0}
   grabItemMoveDuration: 0.35
+  itemRestingAtSlot: 0
   ownItem: {fileID: 3319332158196755199, guid: cb385e464ab54f245a1930aa6136e601, type: 3}
 --- !u!1 &6774760125559503200
 GameObject:

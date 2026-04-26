@@ -130,15 +130,23 @@ MonoBehaviour:
   canUpgrade: 0
   canSetup: 0
   pushable: 0
+  allowPushIn: 0
   grabable: 0
+  objectName: Flour Box
+  objectDescription: A box with flour
+  objectIcon: {fileID: 21300000, guid: c8d68e9223babe645a265af5115f3a25, type: 3}
   level: 1
   sellPrice: 100
   upgradePrice: 100
+  disableWhenRunObjects: []
   defaultDirection: 0
   directionGizmoLength: 1.2
   directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
   itemHolding: {fileID: 0}
   currentDirection: 0
+  itemPosition: {fileID: 0}
+  grabItemMoveDuration: 0.35
+  itemRestingAtSlot: 0
   ownItem: {fileID: -6371976146935682470, guid: 23b0b952d6f8e5b40a5b581a8153b091, type: 3}
 --- !u!4 &659814334097193459 stripped
 Transform:

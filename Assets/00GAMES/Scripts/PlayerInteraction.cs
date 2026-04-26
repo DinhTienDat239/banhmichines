@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using DAT.Core.DesignPatterns;
 
-public class PlayerInteraction : MonoBehaviour
+public class PlayerInteraction : Singleton<PlayerInteraction>
 {
     [Header("Raycast")]
     [SerializeField] private Camera mainCamera;
@@ -46,7 +47,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             return;
         }
-
+        if(GameManager.Instance.isRunning)
+            return;
         if (Input.GetMouseButtonDown(0))
         {
             HandlePointerDown();
@@ -65,6 +67,10 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandlePointerDown()
     {
+        if(GameManager.Instance.isTutorial && !GameManager.Instance.isTyping && !GameManager.Instance.allowInteract){
+            GameManager.Instance.MoveToNextStage();
+            return;
+        }
         if (IsPointerOverUI())
         {
             isPointerDownOnInteractable = false;
@@ -78,6 +84,8 @@ public class PlayerInteraction : MonoBehaviour
             ClearSelection();
             return;
         }
+        if(interactable is Dish dish)
+            return;
 
         SelectInteractable(interactable);
 

@@ -45,85 +45,152 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persistAcrossScenes: 0
-  interactableObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  allowSetUpSmartGrabItemList: []
-  allowSetUpCombineItemList: []
-  gridParent: {fileID: 0}
+  startMoney: 2800
+  allowSetUpSmartGrabItemList:
+  - {fileID: -8072227841191945971, guid: 26a1165436ef06943b37ab2311c5375a, type: 3}
+  - {fileID: 3283343816982509885, guid: 9d9d0ce3762b7224cac5eae31bd3dcaf, type: 3}
+  - {fileID: 5625829422759657920, guid: 73b924cdfb738794d96d0d4c65cc68ce, type: 3}
+  - {fileID: 2291643700503723060, guid: ea8f12f9157756a4781d15b7f5aa91f9, type: 3}
+  - {fileID: 4473507791851867893, guid: a587458b51eade14eacc8bdaed1b7761, type: 3}
+  - {fileID: 3537352158773867807, guid: b90ab1419b96e8e45ad248a25388279d, type: 3}
+  - {fileID: 2110485204210540991, guid: b7f34ac99f4d1324ca61ec0261ff2e9a, type: 3}
+  - {fileID: -1444968187547075890, guid: 4707e7d4a146bac409995322fefba49f, type: 3}
+  - {fileID: -6371976146935682470, guid: 23b0b952d6f8e5b40a5b581a8153b091, type: 3}
+  - {fileID: 3319332158196755199, guid: cb385e464ab54f245a1930aa6136e601, type: 3}
+  - {fileID: -6358094117521124568, guid: af31b99beaa338943ac9ea2053c1b62c, type: 3}
+  - {fileID: 8468462709820424607, guid: f2f99c14366acb040bc3ba5d063d89bc, type: 3}
+  - {fileID: 8468462709820424607, guid: 7c2dbacec60a0fd43aeab2b8e8ae53c3, type: 3}
+  - {fileID: 1023897496393509272, guid: 976b2d0d8713861409f6b5ef2fc1f608, type: 3}
+  - {fileID: 8093821618897538716, guid: 71500f7568c15144eb4aa772ff68aeb9, type: 3}
+  - {fileID: 3616635269160506222, guid: 478fb27e7bc4dc64b881fc0b3da21ca0, type: 3}
+  - {fileID: -3981415954494401536, guid: fdb789eb4e157ab40bbfe1fde5d70490, type: 3}
+  - {fileID: -3619701410652222420, guid: 17b7943138b0aa14b81d8d47ff516cfa, type: 3}
+  allowSetUpCombineItemList:
+  - {fileID: 5625829422759657920, guid: 73b924cdfb738794d96d0d4c65cc68ce, type: 3}
+  - {fileID: 2291643700503723060, guid: ea8f12f9157756a4781d15b7f5aa91f9, type: 3}
+  - {fileID: 4473507791851867893, guid: a587458b51eade14eacc8bdaed1b7761, type: 3}
+  - {fileID: 3537352158773867807, guid: b90ab1419b96e8e45ad248a25388279d, type: 3}
+  - {fileID: 1207061922083819995, guid: 765bfb120ded657438f0b798feeecbf3, type: 3}
+  allowBuyObjectList:
+  - {fileID: 6655380549239368336, guid: 059ec13b25cc57e46873e89789dc5335, type: 3}
+  - {fileID: 7241026638970833514, guid: 0c55590dc2ed78146a195eaa9f2cb12c, type: 3}
+  - {fileID: 172246229632328521, guid: 74c5a733dec9d364a800fae108b052f3, type: 3}
+  - {fileID: 228325197151391130, guid: 1e7cb4e975262b242aae5eeaecf02a23, type: 3}
+  - {fileID: 3918596158370806599, guid: 2d582130da3183d4b86853b949260309, type: 3}
+  - {fileID: 8813668138357547361, guid: 0f53a9c6ed11989429ad46daf8e439ff, type: 3}
+  - {fileID: 4504905959788207576, guid: bdb9bb6f556b6da489097bfc01b1fdd0, type: 3}
+  - {fileID: 5737003608831529960, guid: 9f8ca182aadb79c499dbfd6cba2813b7, type: 3}
+  - {fileID: 7476778782811801612, guid: 54bbc44730f39084cac95a2d0d6c0a4b, type: 3}
+  - {fileID: 6834493202093644800, guid: f6711d4a3c3a22d44b4cd75438355d77, type: 3}
+  - {fileID: 2096884529729984873, guid: ea569f5a65b143647bd6ac17a0a83cc7, type: 3}
+  - {fileID: 8432822190826882137, guid: cc843e9e6d03a7342981683ef58fc589, type: 3}
+  winItemList:
+  - {fileID: 5625829422759657920, guid: 73b924cdfb738794d96d0d4c65cc68ce, type: 3}
+  positionTolerance: 0.05
+  ingreBoxCoolDown: 5
+  isRunning: 0
+  interactableObjects: []
   gridPositions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: -2}
-  - {x: 2, y: 0, z: -2}
-  - {x: 4, y: 0, z: -2}
-  - {x: 6, y: 0, z: -2}
-  - {x: 8, y: 0, z: -2}
-  - {x: 6, y: 0, z: 0}
-  - {x: 6, y: 0, z: 2}
-  - {x: 8, y: 0, z: 2}
-  - {x: 8, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
   - {x: 4, y: 0, z: 0}
+  - {x: 6, y: 0, z: 0}
+  - {x: 8, y: 0, z: 0}
+  - {x: 10, y: 0, z: 0}
+  - {x: 12, y: 0, z: 0}
+  - {x: 14, y: 0, z: 0}
+  - {x: 16, y: 0, z: 0}
+  - {x: 18, y: 0, z: 0}
+  - {x: 20, y: 0, z: 0}
+  - {x: 22, y: 0, z: 0}
   - {x: 0, y: 0, z: 2}
   - {x: 2, y: 0, z: 2}
   - {x: 4, y: 0, z: 2}
-  - {x: -10, y: 0, z: 0}
-  - {x: -10, y: 0, z: -2}
-  - {x: -8, y: 0, z: -2}
-  - {x: -6, y: 0, z: -2}
-  - {x: -4, y: 0, z: -2}
-  - {x: -2, y: 0, z: -2}
-  - {x: -4, y: 0, z: 0}
-  - {x: -4, y: 0, z: 2}
-  - {x: -2, y: 0, z: 2}
-  - {x: -2, y: 0, z: 0}
-  - {x: -8, y: 0, z: 0}
-  - {x: -6, y: 0, z: 0}
-  - {x: -10, y: 0, z: 2}
-  - {x: -8, y: 0, z: 2}
-  - {x: -6, y: 0, z: 2}
-  - {x: 0, y: 0, z: -6}
-  - {x: 0, y: 0, z: -8}
-  - {x: 2, y: 0, z: -8}
-  - {x: 4, y: 0, z: -8}
-  - {x: 6, y: 0, z: -8}
-  - {x: 8, y: 0, z: -8}
-  - {x: 6, y: 0, z: -6}
-  - {x: 6, y: 0, z: -4}
-  - {x: 8, y: 0, z: -4}
-  - {x: 8, y: 0, z: -6}
-  - {x: 2, y: 0, z: -6}
-  - {x: 4, y: 0, z: -6}
-  - {x: 0, y: 0, z: -4}
-  - {x: 2, y: 0, z: -4}
-  - {x: 4, y: 0, z: -4}
-  - {x: -10, y: 0, z: -6}
-  - {x: -10, y: 0, z: -8}
-  - {x: -8, y: 0, z: -8}
-  - {x: -6, y: 0, z: -8}
-  - {x: -4, y: 0, z: -8}
-  - {x: -2, y: 0, z: -8}
-  - {x: -4, y: 0, z: -6}
-  - {x: -4, y: 0, z: -4}
-  - {x: -2, y: 0, z: -4}
-  - {x: -2, y: 0, z: -6}
-  - {x: -8, y: 0, z: -6}
-  - {x: -6, y: 0, z: -6}
-  - {x: -10, y: 0, z: -4}
-  - {x: -8, y: 0, z: -4}
-  - {x: -6, y: 0, z: -4}
-  positionTolerance: 0.05
-  ingreBoxCoolDown: 1
-  isRunning: 0
+  - {x: 6, y: 0, z: 2}
+  - {x: 8, y: 0, z: 2}
+  - {x: 10, y: 0, z: 2}
+  - {x: 12, y: 0, z: 2}
+  - {x: 14, y: 0, z: 2}
+  - {x: 16, y: 0, z: 2}
+  - {x: 18, y: 0, z: 2}
+  - {x: 20, y: 0, z: 2}
+  - {x: 22, y: 0, z: 2}
+  - {x: 0, y: 0, z: 4}
+  - {x: 2, y: 0, z: 4}
+  - {x: 4, y: 0, z: 4}
+  - {x: 6, y: 0, z: 4}
+  - {x: 8, y: 0, z: 4}
+  - {x: 10, y: 0, z: 4}
+  - {x: 12, y: 0, z: 4}
+  - {x: 14, y: 0, z: 4}
+  - {x: 16, y: 0, z: 4}
+  - {x: 18, y: 0, z: 4}
+  - {x: 20, y: 0, z: 4}
+  - {x: 22, y: 0, z: 4}
+  - {x: 0, y: 0, z: 6}
+  - {x: 2, y: 0, z: 6}
+  - {x: 4, y: 0, z: 6}
+  - {x: 6, y: 0, z: 6}
+  - {x: 8, y: 0, z: 6}
+  - {x: 10, y: 0, z: 6}
+  - {x: 12, y: 0, z: 6}
+  - {x: 14, y: 0, z: 6}
+  - {x: 16, y: 0, z: 6}
+  - {x: 18, y: 0, z: 6}
+  - {x: 20, y: 0, z: 6}
+  - {x: 22, y: 0, z: 6}
+  - {x: 0, y: 0, z: 8}
+  - {x: 2, y: 0, z: 8}
+  - {x: 4, y: 0, z: 8}
+  - {x: 6, y: 0, z: 8}
+  - {x: 8, y: 0, z: 8}
+  - {x: 10, y: 0, z: 8}
+  - {x: 12, y: 0, z: 8}
+  - {x: 14, y: 0, z: 8}
+  - {x: 16, y: 0, z: 8}
+  - {x: 18, y: 0, z: 8}
+  - {x: 20, y: 0, z: 8}
+  - {x: 22, y: 0, z: 8}
+  - {x: 0, y: 0, z: 10}
+  - {x: 2, y: 0, z: 10}
+  - {x: 4, y: 0, z: 10}
+  - {x: 6, y: 0, z: 10}
+  - {x: 8, y: 0, z: 10}
+  - {x: 10, y: 0, z: 10}
+  - {x: 12, y: 0, z: 10}
+  - {x: 14, y: 0, z: 10}
+  - {x: 16, y: 0, z: 10}
+  - {x: 18, y: 0, z: 10}
+  - {x: 20, y: 0, z: 10}
+  - {x: 22, y: 0, z: 10}
+  - {x: 0, y: 0, z: 12}
+  - {x: 2, y: 0, z: 12}
+  - {x: 4, y: 0, z: 12}
+  - {x: 6, y: 0, z: 12}
+  - {x: 8, y: 0, z: 12}
+  - {x: 10, y: 0, z: 12}
+  - {x: 12, y: 0, z: 12}
+  - {x: 14, y: 0, z: 12}
+  - {x: 16, y: 0, z: 12}
+  - {x: 18, y: 0, z: 12}
+  - {x: 20, y: 0, z: 12}
+  - {x: 22, y: 0, z: 12}
+  - {x: 0, y: 0, z: 14}
+  - {x: 2, y: 0, z: 14}
+  - {x: 4, y: 0, z: 14}
+  - {x: 6, y: 0, z: 14}
+  - {x: 8, y: 0, z: 14}
+  - {x: 10, y: 0, z: 14}
+  - {x: 12, y: 0, z: 14}
+  - {x: 14, y: 0, z: 14}
+  - {x: 16, y: 0, z: 14}
+  - {x: 18, y: 0, z: 14}
+  - {x: 20, y: 0, z: 14}
+  - {x: 22, y: 0, z: 14}
+  gridParent: {fileID: 0}
+  mapSize: {x: 12, y: 8}
+  floorPref: {fileID: 7056712222902565326, guid: a930058ab2213f74e959015eeeee3aef, type: 3}
+  cameraOffsetXZ: {x: 1.75, y: -7.5}
+  cameraFixedY: 8
+  cameraMinOrthoSize: 5
+  cameraOrthoPadding: 1

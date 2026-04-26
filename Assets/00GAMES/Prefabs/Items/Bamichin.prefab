@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.875, z: -4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,14 +99,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f19b046ca93a84f8c6f8431f4055b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: banhmichin
+  itemName: Baked Banh Mi
   itemIcon: {fileID: 21300000, guid: 3c1e5f6b644b8114685964aa98ab4f96, type: 3}
   canChop: 0
   afterChopItem: {fileID: 0}
   canHob: 0
   afterHobItem: {fileID: 0}
-  canHandMachine: 0
-  afterHandMachineItem: {fileID: 0}
+  canMix: 0
+  afterMix: {fileID: 0}
   canOven: 0
   afterOvenItem: {fileID: 0}
+  canXaxiu: 0
+  afterXaxiuItem: {fileID: 0}
   canCombine: 0
+  combinedFromList: []

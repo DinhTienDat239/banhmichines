@@ -16,18 +16,27 @@ public class Item : MonoBehaviour
     [SerializeField]
     Item afterHobItem;
     [SerializeField]
-    public bool canHandMachine;
+    public bool canMix;
     [SerializeField]
-    Item afterHandMachineItem;
+    Item afterMix;
     [SerializeField]
     public bool canOven;
     [SerializeField]
     Item afterOvenItem;
     [SerializeField]
+    public bool canXaxiu;
+    [SerializeField]
+    Item afterXaxiuItem;
+    [SerializeField]
     public bool canCombine;
+    [SerializeField]
+    public Item[] combinedFromList;
 
     public Item AfterChopItem => afterChopItem;
+    public Item AfterHobItem => afterHobItem;
+    public Item AfterMixItem => afterMix;
     public Item AfterOvenItem => afterOvenItem;
+    public Item AfterXaxiuItem => afterXaxiuItem;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -4947,8 +4947,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1.0037518, z: 2}
-  m_Center: {x: 0, y: 0.49812415, z: -0.000000029802322}
+  m_Size: {x: 2, y: 2.032076, z: 2}
+  m_Center: {x: 0, y: 1.0122862, z: -2.9309373e-16}
 --- !u!114 &5190098829091211962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4963,20 +4963,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canRotate: 1
   canSell: 1
-  canUpgrade: 1
+  canUpgrade: 0
   canSetup: 0
-  pushable: 0
+  pushable: 1
   allowPushIn: 1
   grabable: 0
+  objectName: Chopper
+  objectDescription: A machine that automatically slice food/ingredient. Can push
+    forward after slice
+  objectIcon: {fileID: 21300000, guid: c9a2f85238989fc42b453dea8aa8435f, type: 3}
   level: 1
-  sellPrice: 100
+  sellPrice: 400
   upgradePrice: 100
+  disableWhenRunObjects: []
   defaultDirection: 0
   directionGizmoLength: 1.2
   directionGizmoColor: {r: 0, g: 1, b: 1, a: 1}
   itemHolding: {fileID: 0}
   currentDirection: 0
   itemPosition: {fileID: 9085006808570066144}
-  grabItemMoveDuration: 0.35
+  grabItemMoveDuration: 1
+  itemRestingAtSlot: 0
   chopTime: 1
   chopFX: {fileID: 1382914648555273476}

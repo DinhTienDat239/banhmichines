@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class CameraController : MonoBehaviour
 {
@@ -25,6 +27,7 @@ public class CameraController : MonoBehaviour
     private Camera _cam;
     private float _zoomVelocity;
     private Vector3 _moveVelocity;
+    private readonly List<RaycastResult> _uiRaycastResults = new List<RaycastResult>();
 
     private void Start()
     {
@@ -60,6 +63,11 @@ public class CameraController : MonoBehaviour
 
     private void HandleZoomInput()
     {
+        if (IsPointerOverUI())
+        {
+            return;
+        }
+
         scrollInput = Input.mouseScrollDelta.y;
         if (Mathf.Abs(scrollInput) < Mathf.Epsilon)
         {
@@ -89,6 +97,29 @@ public class CameraController : MonoBehaviour
         }
 
         targetOrthographicSize = newTargetSize;
+    }
+
+    private bool IsPointerOverUI()
+    {
+        EventSystem eventSystem = EventSystem.current;
+        if (eventSystem == null)
+        {
+            return false;
+        }
+
+        if (eventSystem.IsPointerOverGameObject())
+        {
+            return true;
+        }
+
+        PointerEventData pointerEventData = new PointerEventData(eventSystem)
+        {
+            position = Input.mousePosition
+        };
+
+        _uiRaycastResults.Clear();
+        eventSystem.RaycastAll(pointerEventData, _uiRaycastResults);
+        return _uiRaycastResults.Count > 0;
     }
 
     private void ApplySmoothMovement()

@@ -100,8 +100,15 @@ public class Oven : InteractableObject
 
             if (afterOvenPrefab != null && itemSlot != null)
             {
-                Item replacedItem = Instantiate(afterOvenPrefab, itemSlot.position, itemSlot.rotation, itemSlot);
-                replacedItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                Item replacedItem = Instantiate(afterOvenPrefab, itemSlot);
+                replacedItem.transform.localPosition = Vector3.zero;
+                replacedItem.transform.localRotation = afterOvenPrefab.transform.localRotation;
+                Vector3 desiredWorldScale = afterOvenPrefab.transform.localScale;
+                Vector3 parentWorldScale = itemSlot.lossyScale;
+                replacedItem.transform.localScale = new Vector3(
+                    SafeDivide(desiredWorldScale.x, parentWorldScale.x),
+                    SafeDivide(desiredWorldScale.y, parentWorldScale.y),
+                    SafeDivide(desiredWorldScale.z, parentWorldScale.z));
                 itemHolding = replacedItem;
             }
             else
@@ -111,5 +118,27 @@ public class Oven : InteractableObject
         }
 
         isOvening = false;
+    }
+
+    private float SafeDivide(float value, float divisor)
+    {
+        if (Mathf.Approximately(divisor, 0f))
+        {
+            return value;
+        }
+
+        return value / divisor;
+    }
+
+    public void ForceStopAndClearFx()
+    {
+        StopAllCoroutines();
+        isOvening = false;
+
+        if (ovenFX != null)
+        {
+            ovenFX.transform.localScale = Vector3.zero;
+            ovenFX.SetActive(false);
+        }
     }
 }

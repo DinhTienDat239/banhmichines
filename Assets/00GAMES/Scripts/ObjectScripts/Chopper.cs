@@ -25,17 +25,19 @@ public class Chopper : InteractableObject
     void Update()
     {   if(!GameManager.Instance.isRunning)
             return;
+
+        
+        TryChop();
         if (grabable)
         {
             Grab();
         }
 
-        if (pushable)
+        if (pushable && !isChopping)
         {
             Push();
         }
 
-        TryChop();
     }
 
     public void TryChop()
@@ -49,13 +51,13 @@ public class Chopper : InteractableObject
         {
             return;
         }
-
+        isChopping = true;
         StartCoroutine(ChopRoutine(itemHolding));
     }
 
     private System.Collections.IEnumerator ChopRoutine(Item choppingItem)
     {
-        isChopping = true;
+        
 
         if (chopFX != null)
         {
@@ -99,8 +101,15 @@ public class Chopper : InteractableObject
 
             if (afterChopPrefab != null && itemSlot != null)
             {
-                Item replacedItem = Instantiate(afterChopPrefab, itemSlot.position, itemSlot.rotation, itemSlot);
-                replacedItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                Item replacedItem = Instantiate(afterChopPrefab, itemSlot);
+                replacedItem.transform.localPosition = Vector3.zero;
+                replacedItem.transform.localRotation = afterChopPrefab.transform.localRotation;
+                Vector3 desiredWorldScale = afterChopPrefab.transform.localScale;
+                Vector3 parentWorldScale = itemSlot.lossyScale;
+                replacedItem.transform.localScale = new Vector3(
+                    SafeDivide(desiredWorldScale.x, parentWorldScale.x),
+                    SafeDivide(desiredWorldScale.y, parentWorldScale.y),
+                    SafeDivide(desiredWorldScale.z, parentWorldScale.z));
                 itemHolding = replacedItem;
             }
             else
@@ -110,5 +119,27 @@ public class Chopper : InteractableObject
         }
 
         isChopping = false;
+    }
+
+    private float SafeDivide(float value, float divisor)
+    {
+        if (Mathf.Approximately(divisor, 0f))
+        {
+            return value;
+        }
+
+        return value / divisor;
+    }
+
+    public void ForceStopAndClearFx()
+    {
+        StopAllCoroutines();
+        isChopping = false;
+
+        if (chopFX != null)
+        {
+            chopFX.transform.localScale = Vector3.zero;
+            chopFX.SetActive(false);
+        }
     }
 }

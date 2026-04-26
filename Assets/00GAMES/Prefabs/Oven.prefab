@@ -245,8 +245,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.8, z: 1.4}
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Size: {x: 1.41268, y: 1.2921346, z: 1.4}
+  m_Center: {x: 0.0036201081, y: 0.6460673, z: 0}
 --- !u!114 &5232905163037942436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,13 +261,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canRotate: 1
   canSell: 1
-  canUpgrade: 1
+  canUpgrade: 0
   canSetup: 0
   pushable: 0
   allowPushIn: 1
   grabable: 0
+  objectName: Oven
+  objectDescription: A high tech Oven. Automatically grill anything to it's finest
+  objectIcon: {fileID: 21300000, guid: abbe7af512988bd4e890ddd99945e60b, type: 3}
   level: 1
-  sellPrice: 100
+  sellPrice: 400
   upgradePrice: 100
   disableWhenRunObjects: []
   defaultDirection: 2
@@ -278,7 +281,7 @@ MonoBehaviour:
   itemPosition: {fileID: 9083721619817347405}
   grabItemMoveDuration: 0.35
   itemRestingAtSlot: 0
-  ovenTime: 3
+  ovenTime: 2.5
   ovenFX: {fileID: 4296994086180120376}
 --- !u!1001 &7852985733446230996
 PrefabInstance:
