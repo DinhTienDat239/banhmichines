@@ -246,16 +246,16 @@ public class GameManager : Singleton<GameManager>
     }
     public void CheckWin(){
         Dictionary<string, bool> winItemKeys = new Dictionary<string, bool>();
+        foreach(Item item in winItemList){
+                    winItemKeys[item.itemName] = false;
+                }
         foreach(InteractableObject interactable in interactableObjects){
             if(interactable is Dish dish){
                 if(dish.itemHolding == null){
                     continue;
                 }
                 foreach(Item item in winItemList){
-                    if(winItemKeys.ContainsKey(item.itemName)){
-                        continue;
-                    }
-                    winItemKeys[item.itemName] = false;
+                    
                     if(dish.itemHolding.itemName == item.itemName){
                         winItemKeys[item.itemName] = true;
                         ObjectUIManager.Instance.UpdateMissionItem(item);
